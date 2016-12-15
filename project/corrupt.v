@@ -4,7 +4,8 @@ module corrupt (in, out);
 
 	wire noise;
 
-	noise_block	gn	(	.rst(rst), .clk(clk), .out(noise)			);
-	add32 a (	.a(in), .b(noise), .y(out)	);
+	assign out = in;
+	//noise_block	gn	(	.rst(rst), .clk(clk), .out(noise)			);
+	//add32 a (	.a(in), .b(noise), .y(out)	);
 
 endmodule

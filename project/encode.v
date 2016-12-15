@@ -5,29 +5,31 @@ module encode (message, codeword);
 	reg [15:0] codeword;
 
 	//m*G
-	integer i,j;
-	always_comb begin
-		for(i=0; i<=4; i=i+1) begin : row_sum_mult//loop through m's index
+	//integer i,j;
+	always@(message) begin
+		//i=0;
+		//j=0;
+		//for(i=0; i<=4; i=i+1) begin : row_sum_mult//loop through m's index
 			//for(j=0; j<=15; j=j+1) begin : column_sum_mult //compute c[i] by summing each element of the codeword (G's column) times m[i]
 				//codeword[i] = codeword[i] ^ message[i] ^ project.G[i][j];
 			//end
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][0];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][1];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][2];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][3];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][4];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][5];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][6];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][7];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][8];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][9];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][10];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][11];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][12];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][13];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][14];
-			codeword[i] = codeword[i] ^ message[i] ^ project.G[i][15];
-		end
+			codeword[0]  = message[0];
+			codeword[1]  = message[1];
+			codeword[2]  = message[2];
+			codeword[3]  = message[3];
+			codeword[4]  = message[4];
+			codeword[5]  = message[0] ^ message[1] ^ message[2];
+			codeword[6]  = message[0] ^ message[1] ^ message[3];
+			codeword[7]  = message[0] ^ message[1] ^ message[4];
+			codeword[8]  = message[0] ^ message[2] ^ message[3];
+			codeword[9]  = message[0] ^ message[2] ^ message[4];
+			codeword[10] = message[0] ^ message[3] ^ message[4];
+			codeword[11] = message[1] ^ message[2] ^ message[3];
+			codeword[12] = message[1] ^ message[2] ^ message[4];
+			codeword[13] = message[1] ^ message[3] ^ message[4];
+			codeword[14] = message[2] ^ message[3] ^ message[4];
+			codeword[15] = message[0] ^ message[1] ^ message[2] ^ message[3] ^ message[4];
+		//end
 	end
 
 endmodule
