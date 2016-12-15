@@ -1,0 +1,16 @@
+Fitter Status : Successful - Wed Dec 14 20:04:25 2016
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : DE2_Audio_Example
+Top-level Entity Name : toplevel
+Family : Cyclone II
+Device : EP2C35F672C6
+Timing Models : Final
+Total logic elements : 2,786 / 33,216 ( 8 % )
+    Total combinational functions : 1,471 / 33,216 ( 4 % )
+    Dedicated logic registers : 2,267 / 33,216 ( 7 % )
+Total registers : 2267
+Total pins : 34 / 475 ( 7 % )
+Total virtual pins : 0
+Total memory bits : 33,536 / 483,840 ( 7 % )
+Embedded Multiplier 9-bit elements : 0 / 70 ( 0 % )
+Total PLLs : 1 / 4 ( 25 % )
