@@ -9,6 +9,6 @@ module encode_corrupt_decode (audio_in, aclk, clk, audio_out);
 
 	encode	e	(	.message(audio_in), .codeword(ec)			);
 	corrupt	c	(	.in(ec),	.out(de)			);
-	decode	d	(	.r(de),	.message(audio_out)	);
+	decode	d	(	.r(de),	.clk(aclk), .message(audio_out)	);
 
 endmodule

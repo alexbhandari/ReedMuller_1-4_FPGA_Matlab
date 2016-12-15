@@ -6,6 +6,10 @@ module project (audio_in, aclk, clk, audio_out);
 
 	//quantize
 	wire [9:0] audio_q = audio_in[31:22];
+	
+	//code blocks
+	encode_corrupt_decode	ecd0	(	.audio_in(audio_q[9:6]),	.aclk(aclk), .clk(clk), .audio_out(audio_out[31:27])	);
+	encode_corrupt_decode	ecd1	(	.audio_in(audio_q[5:0]),	.aclk(aclk), .clk(clk), .audio_out(audio_out[26:22])	);
 
 	//generator is a 16x5 matrix
 	reg [15:0] G [0:4] = '{		16'b1000011111100001,
@@ -27,7 +31,8 @@ module project (audio_in, aclk, clk, audio_out);
 										16'b0011100000000010,
 										16'b1111100000000001	};
 
-	reg [15:0] e [0:695] = '{  16'b1000000000000000,
+	reg [15:0] e [0:696] = '{  16'b0000000000000000,
+										16'b1000000000000000,
 	                           16'b0100000000000000,
 	                           16'b0010000000000000,
 	                           16'b0001000000000000,
@@ -723,8 +728,5 @@ module project (audio_in, aclk, clk, audio_out);
 	                           16'b0000000000001101,
 	                           16'b0000000000001011,
 	                           16'b0000000000000111    };
-
-	encode_corrupt_decode	ecd0	(	.audio_in(audio_q[9:6]),	.aclk(aclk), .clk(clk), .audio_out(audio_out[31:27])	);
-	encode_corrupt_decode	ecd1	(	.audio_in(audio_q[5:0]),	.aclk(aclk), .clk(clk), .audio_out(audio_out[26:22])	);
 
 endmodule
