@@ -1,7 +1,0 @@
-module decode (codeword, message);
-	input [15:0] codeword;
-	output [5:0] message;
-
-	assign message = codeword[4..0];
-
-endmodule
