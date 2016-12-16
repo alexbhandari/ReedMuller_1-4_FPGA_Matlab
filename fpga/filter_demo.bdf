@@ -390,7 +390,7 @@ applicable agreement for further details.
 		(pt 216 32)
 		(output)
 		(text "audio_out[31..0]" (rect 0 0 79 12)(font "Arial" ))
-		(text "audio_out[31..0]" (rect 129 27 195 39)(font "Arial" ))
+		(text "audio_out[31..0]" (rect 129 27 208 39)(font "Arial" ))
 		(line (pt 216 32)(pt 200 32)(line_width 3))
 	)
 	(drawing

@@ -20,10 +20,10 @@ module corrupt (in, clk, switch, out);
 	default: noise = 16'b0;
 	endcase
 
-	assign out = noise;
+	//assign out = noise;
 	noise_block	gn1	(	.rst(rst), .clk(clk), .out(noise1)			);
 	noise_block	gn2	(	.rst(rst), .clk(clk), .out(noise2)			);
 	noise_block	gn3	(	.rst(rst), .clk(clk), .out(noise3)			);
-	//add32 a (	.a(in), .b(noise), .y(out)	);
+	add32 a (	.a(in), .b(noise), .y(out)	);
 
 endmodule
