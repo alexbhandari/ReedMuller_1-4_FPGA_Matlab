@@ -1,17 +1,18 @@
 module decode (r, clk, message, het);
-	input [15:0] r;
+	input [0:15] r;
 	input clk;
-	output [5:0] message;
+	output [4:0] message;
 	output [10:0] het;
 
-	reg [10:0] het;
-	reg [10:0] e_het = 11'b00000000000;
-	reg [15:0] codeword;
-	reg [10:0] error;
+	reg [0:10] het;
+	reg [0:10] e_het = 11'b00000000000;
+	reg [0:15] codeword;
+	reg [0:10] error;
 	
-
+	reg [0:15] r;
+	//assign r = 16'b1010010011011011; //MSB flipped to 1
 	//het = r*transpose(H)
-	genvar i,j,k;
+	integer i;
 //	generate 
 //		for(i=0; i<=4; i=i+1) begin : row_sum_mult//loop through r's index
 //			for(j=0; j<=15; j=j+1) begin : column_sum_mult //compute het[i] by summing each element of the r (G's column) times r[i]
@@ -30,18 +31,8 @@ always@(r) begin
 	het[7]  <=r[1]^r[2]^r[4]^r[12];
 	het[8]  <=r[1]^r[3]^r[4]^r[13];
 	het[9]  <=r[2]^r[3]^r[4]^r[14];
-	het[10] <=r[0]^r[1]^r[2]^r[3]^r[4]^r[15];
-end	
-
-	always@(het) begin
-		if(het == project.eb[0]) begin
-			error = project.e[1];
-			//break;
-		end
-	end
-
+	het[10] <=r[0]^r[1]^r[2]^r[3]^r[4]^r[15];	
 	// search for match
-	generate
 		for (i=0; i<=696; i=i+1) begin : compare // loop through error book
 	
 			// compute e_het for each e[i]
@@ -54,19 +45,16 @@ end
 			//--solution pre-stored in eb--
 			
 			// at clk edge: seach through all e_het[i] and compute the message at the match
-			always@(het) begin
 				error = project.e[i];
 				if(het == project.eb[i]) begin
 					error = project.e[i];
 					//break;
 				end
 			end
-			
 		end
-	endgenerate
 	//if no error is found e remains 0 and the corrupted message is returned
 	
-	assign codeword = r ^ error;
-	assign message = codeword[15:11];
+ assign codeword = r ^ error;
+ assign message = codeword[0:4];
 	
 endmodule

@@ -1,37 +1,18 @@
-module project (audio_in, aclk, clk, audio_out);
+module project (audio_in, aclk, clk, switch, audio_out);
 	input [31:0] audio_in;
 	input aclk;
 	input clk;
+	input [2:0] switch;
 	output [31:0] audio_out;
 
 	//quantize
 	wire [9:0] audio_q = audio_in[31:22];
 	
 	//code blocks
-	encode_corrupt_decode	ecd0	(	.audio_in(audio_q[9:6]),	.aclk(aclk), .clk(clk), .audio_out(audio_out[31:27])	);
-	encode_corrupt_decode	ecd1	(	.audio_in(audio_q[5:0]),	.aclk(aclk), .clk(clk), .audio_out(audio_out[26:22])	);
+	encode_corrupt_decode	ecd0	(	.audio_in(audio_q[9:5]),	.aclk(aclk), .clk(clk), .switch(switch), .audio_out(audio_out[31:27])	);
+	encode_corrupt_decode	ecd1	(	.audio_in(audio_q[4:0]),	.aclk(aclk), .clk(clk), .switch(switch), .audio_out(audio_out[26:22])	);
 
-	//generator is a 16x5 matrix
-	reg [15:0] G [0:4] = '{		16'b1000011111100001,
-										16'b0100011100011101,
-										16'b0010010011011011,
-										16'b0001001010110111,
-										16'b0000100101101111 };
-
-	//parity check is a 11x16 matrix
-	reg [15:0] H [0:10] = '{	16'b1110010000000000,
-										16'b1101001000000000,
-										16'b1100100100000000,
-										16'b1011000010000000,
-										16'b1010100001000000,
-										16'b1001100000100000,
-										16'b0111000000010000,
-										16'b0110100000001000,
-										16'b0101100000000100,
-										16'b0011100000000010,
-										16'b1111100000000001	};
-
-	reg [15:0] e [0:696] = '{  16'b0000000000000000,
+	reg [0:15] e [0:696] = '{  16'b0000000000000000,
 										16'b1000000000000000,
 	                           16'b0100000000000000,
 	                           16'b0010000000000000,
@@ -729,7 +710,7 @@ module project (audio_in, aclk, clk, audio_out);
 	                           16'b0000000000001011,
 	                           16'b0000000000000111    };
 										
-   reg [15:0] eb [0:696] = '{ 11'b00000000000,
+   reg [0:15] eb [0:696] = '{ 11'b00000000000,
                               11'b11111100001,
                               11'b11100011101,
                               11'b10011011011,

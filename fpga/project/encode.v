@@ -1,8 +1,16 @@
-module encode (message, codeword);
-	input [5:0] message;
-	output [15:0] codeword;
+module encode (message, codeword, mr, cr);
+//module encode (message, codeword);
+	input [0:4] message;
+	output [0:15] codeword;
+	output [4:0] mr;
+	output [15:0] cr;
 	
-	reg [15:0] codeword;
+	reg [15:0] codeword_rev;
+	assign codeword_rev = codeword;
+	reg [15:0] rev_message;
+	assign rev_message = message;
+	assign mr = rev_message;
+	assign cr = codeword_rev;
 
 	//m*G
 	//integer i,j;

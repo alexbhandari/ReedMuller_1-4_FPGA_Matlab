@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for DE2_Audio_Example
-Thu Dec 15 01:59:43 2016
+Thu Dec 15 22:17:10 2016
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -272,9 +272,9 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 4     ; 4    ;
 ; Unconstrained Input Ports       ; 10    ; 10   ;
-; Unconstrained Input Port Paths  ; 393   ; 393  ;
-; Unconstrained Output Ports      ; 12    ; 12   ;
-; Unconstrained Output Port Paths ; 323   ; 323  ;
+; Unconstrained Input Port Paths  ; 675   ; 675  ;
+; Unconstrained Output Ports      ; 4     ; 4    ;
+; Unconstrained Output Port Paths ; 11    ; 11   ;
 +---------------------------------+-------+------+
 
 
@@ -284,7 +284,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
-    Info: Processing started: Thu Dec 15 01:59:40 2016
+    Info: Processing started: Thu Dec 15 22:17:08 2016
 Info: Command: quartus_sta AudioLab -c DE2_Audio_Example
 Info: qsta_default_script.tcl version: #1
 Info (21077): Low junction temperature is 0 degrees C
@@ -333,8 +333,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 14 warnings
     Info: Peak virtual memory: 504 megabytes
-    Info: Processing ended: Thu Dec 15 01:59:43 2016
-    Info: Elapsed time: 00:00:03
+    Info: Processing ended: Thu Dec 15 22:17:10 2016
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 
