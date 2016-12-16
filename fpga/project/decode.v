@@ -1,15 +1,15 @@
-module decode (r, clk, message, het);
-	input [0:15] r;
+module decode (r, clk, message, het, error);
+	input reg [0:15] r;
 	input clk;
-	output [4:0] message;
-	output [10:0] het;
+	output reg [4:0] message;
+	output reg [10:0] het;
+	output reg [0:10] error;
 
-	reg [0:10] het;
-	reg [0:10] e_het = 11'b00000000000;
+	//reg [10:0] het;
+	//reg [0:10] e_het = 11'b00000000000;
 	reg [0:15] codeword;
-	reg [0:10] error;
+	//reg [0:10] error;
 	
-	reg [0:15] r;
 	//assign r = 16'b1010010011011011; //MSB flipped to 1
 	//het = r*transpose(H)
 	integer i;
@@ -45,7 +45,7 @@ always@(r) begin
 			//--solution pre-stored in eb--
 			
 			// at clk edge: seach through all e_het[i] and compute the message at the match
-				error = project.e[i];
+				//error = project.e[i];
 				if(het == project.eb[i]) begin
 					error = project.e[i];
 					//break;

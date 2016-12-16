@@ -11,8 +11,10 @@ module corrupt (in, clk, switch, out);
 
 	always @ (*)
 	case (switch)
-	0 : noise = 16'b0000000000000000; //no noise
-	1 : noise = noise1[0:15]; //0dB
+	0 : noise = 16'b1010101010101010; //all noise
+	1 : noise = 16'b0000000000000000; //no noise
+	2 : noise = 16'b0010000000100010; //3 errors
+	//1 : noise = noise1[0:15]; //0dB
 	2 : noise = noise1[0:15] & noise1[16:31]; //-10dB
 	3 : noise = noise1[0:15] & noise1[16:31] & noise2[0:15]; //-20dB
 	4 : noise = noise1[0:15] & noise1[16:31] & noise2[0:15] & noise2[16:31]; //-30dB
@@ -24,6 +26,7 @@ module corrupt (in, clk, switch, out);
 	noise_block	gn1	(	.rst(rst), .clk(clk), .out(noise1)			);
 	noise_block	gn2	(	.rst(rst), .clk(clk), .out(noise2)			);
 	noise_block	gn3	(	.rst(rst), .clk(clk), .out(noise3)			);
-	add32 a (	.a(in), .b(noise), .y(out)	);
+	//add32 a (	.a(in), .b(noise), .y(out)	);
+	assign out = in ^ noise; 
 
 endmodule
