@@ -23,13 +23,8 @@ for i=1:size(r2,2) % loop through r
     end
 end
 
-r_e
-size(r_e)
-size(H_e)
-e
-
 %run syndrome on errors only
-dec_c = syndrome_b(r_e, H_e, size(r_e,2))
+dec_c = syndrome_b(r_e, H_e, size(r_e,2));
 new_c = [];
 %replace erasure
 for i=1:size(r2,2) % loop through r
