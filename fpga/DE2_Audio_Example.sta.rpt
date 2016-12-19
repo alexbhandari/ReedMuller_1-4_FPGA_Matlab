@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for DE2_Audio_Example
-Fri Dec 16 14:17:22 2016
+Mon Dec 19 14:42:09 2016
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -284,7 +284,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
-    Info: Processing started: Fri Dec 16 14:17:19 2016
+    Info: Processing started: Mon Dec 19 14:42:06 2016
 Info: Command: quartus_sta AudioLab -c DE2_Audio_Example
 Info: qsta_default_script.tcl version: #1
 Info (21077): Low junction temperature is 0 degrees C
@@ -333,7 +333,7 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 14 warnings
     Info: Peak virtual memory: 518 megabytes
-    Info: Processing ended: Fri Dec 16 14:17:22 2016
+    Info: Processing ended: Mon Dec 19 14:42:09 2016
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:01
 
